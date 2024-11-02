@@ -1,5 +1,5 @@
 prefix: "§7(§2GenderSystem§7) §r"
 
 gender:
-  male: "Male" ## kontol
-  female: "Female" ## memek
+  male: "Male"
+  female: "Female"

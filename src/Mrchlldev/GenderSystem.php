@@ -50,7 +50,7 @@ class GenderSystem extends PluginBase implements Listener {
             $target = $this->getServer()->getPlayerByPrefix(strtolower($args[0]));
             if(!$target instanceof Player){
                 $sender->sendMessage("§cPlayer by name: §e" . $args[0] . " §cnot found!");
-                return false!
+                return false;
             }
             $gender = $this->getPlayerGender($target);
             $sender->sendMessage("§aGender by name: §b" . $target . "\n§aIs a §b" . $gender);

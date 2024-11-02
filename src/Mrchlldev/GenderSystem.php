@@ -55,6 +55,7 @@ class GenderSystem extends PluginBase implements Listener {
             $gender = $this->getPlayerGender($target);
             $sender->sendMessage("§aGender by name: §b" . $target . "\n§aIs a §b" . $gender);
         }
+        return true;
     }
 
     public function onTagsResolve(TagsResolveEvent $event): void {
@@ -111,7 +112,7 @@ class GenderSystem extends PluginBase implements Listener {
 
     public function sendGenderMenu(Player $player, string $text = ""): void {
         if($this->hasGender($player)){
-            $player-sendMessage("§aYou have gender: " . $this->getPlayerGender($player));
+            $player->sendMessage("§aYou have gender: " . $this->getPlayerGender($player));
             return;
         }
         $form = new SimpleForm(function(Player $player, $data){

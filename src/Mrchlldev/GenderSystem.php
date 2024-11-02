@@ -10,6 +10,8 @@ use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\scheduler\ClosureTask;
 use pocketmine\utils\SingletonTrait;
+use pocketmine\command\CommandSender;
+use pocketmine\command\Command;
 
 use jojoe77777\FormAPI\SimpleForm;
 use Ifera\Scorehud\Scorehud;
@@ -37,6 +39,22 @@ class GenderSystem extends PluginBase implements Listener {
                 (new PlayerTagUpdateEvent($player, new ScoreTag("gendersystem.gender", $this->getPlayerGender($player))))->call();
             }
         }), 20);
+    }
+
+    public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool {
+        if($command->getName() === "seegender"){
+            if(!isset($args[0])){
+                $sender->sendMessage("§cUsage: §f/seegender <player>");
+                return false;
+            }
+            $target = $this->getServer()->getPlayerByPrefix(strtolower($args[0]));
+            if(!$target instanceof Player){
+                $sender->sendMessage("§cPlayer by name: §e" . $args[0] . " §cnot found!");
+                return false!
+            }
+            $gender = $this->getPlayerGender($target);
+            $sender->sendMessage("§aGender by name: §b" . $target . "\n§aIs a §b" . $gender);
+        }
     }
 
     public function onTagsResolve(TagsResolveEvent $event): void {

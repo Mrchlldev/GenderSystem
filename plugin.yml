@@ -3,3 +3,13 @@ version: 1.0.0
 api: 5.0.0
 author: Mrchlldev
 main: Mrchlldev\GenderSystem
+depend: ["ScoreHud"]
+
+commands:
+  seegender:
+    description: "See other player gender"
+    permission: gendersystem.command.seegender
+
+permission:
+  gendersystem.command.seegender:
+    default: true
